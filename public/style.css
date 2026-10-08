@@ -1,5 +1,9 @@
 /* Custom Properties */
 :root {
+    --bg-layer-2: #071321; /* Slightly lighter than hero */
+    --bg-layer-3: #050e19;
+    --bg-layer-4: #040b13;
+    --bg-layer-5: #020509; /* Deep but not absolute black */
     --bg-dark: #040a13;
     --bg-darker: #02050a;
     --accent: #08B2C4;
@@ -626,6 +630,7 @@ section:not(.hero) {
 
 /* Footer */
 footer {
+    background-color: var(--bg-layer-5);
     padding: 40px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -716,30 +721,28 @@ footer {
     width: 100%;
     height: 100%;
 }
-.wave-to-darker {
-    background-color: var(--bg-dark);
-}
-.wave-to-darker .wave-path {
-    fill: var(--bg-darker);
-}
-.wave-to-dark {
-    background-color: var(--bg-darker);
-}
-.wave-to-dark .wave-path {
-    fill: var(--bg-dark);
-}
+/* Transition Hero (Layer 1) to About (Layer 2) */
+.wave-1 { background-color: var(--bg-dark); }
+.wave-1 .wave-path { fill: var(--bg-layer-2); }
+
+/* Transition About (Layer 2) to Skills (Layer 3) */
+.wave-2 { background-color: var(--bg-layer-2); }
+.wave-2 .wave-path { fill: var(--bg-layer-3); }
+
+/* Transition Skills (Layer 3) to Projects (Layer 4) */
+.wave-3 { background-color: var(--bg-layer-3); }
+.wave-3 .wave-path { fill: var(--bg-layer-4); }
+
+/* Transition Projects (Layer 4) to Contact (Layer 5) */
+.wave-4 { background-color: var(--bg-layer-4); }
+.wave-4 .wave-path { fill: var(--bg-layer-5); }
 
 /* Adjust Section Backgrounds */
-section:not(.hero) {
-    padding: 80px 0 120px;
-    border-top: none;
-}
-#about, #projects {
-    background-color: var(--bg-darker);
-}
-#skills, #contact {
-    background-color: var(--bg-dark);
-}
+section:not(.hero) { padding: 80px 0 120px; border-top: none; }
+#about { background-color: var(--bg-layer-2); }
+#skills { background-color: var(--bg-layer-3); }
+#projects { background-color: var(--bg-layer-4); }
+#contact { background-color: var(--bg-layer-5); }
 
 
 /* --- Animations for Waves and Bubbles --- */
@@ -893,4 +896,108 @@ section:not(.hero) {
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+/* Ensure images inside .about-image and .project-image fit perfectly */
+.about-image img, .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+
+
+/* --- Deep Sea Creature Eyes --- */
+.creature-eyes {
+    position: absolute;
+    bottom: 50px;
+    left: 20%;
+    display: flex;
+    gap: 20px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: creatureStare 20s infinite ease-in-out;
+}
+
+.eye {
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5), 0 0 30px rgba(8, 178, 196, 0.3);
+    animation: creatureBlink 7s infinite;
+}
+
+@keyframes creatureStare {
+    0%, 20% { opacity: 0; transform: translateX(0) translateY(10px); }
+    30%, 70% { opacity: 0.9; transform: translateX(20px) translateY(0); }
+    80%, 100% { opacity: 0; transform: translateX(0) translateY(10px); }
+}
+
+@keyframes creatureBlink {
+    0%, 94%, 98% { transform: scaleY(1); }
+    96% { transform: scaleY(0.1); }
+    100% { transform: scaleY(1); }
+}
+
+
+
+/* --- Ocean Floor Corals --- */
+.ocean-floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.coral-rock {
+    position: absolute;
+    bottom: 0;
+    background: #010204; /* Very dark coral silhouette */
+}
+
+/* Creating jagged abstract coral shapes using clip-path */
+.rock-1 {
+    width: 300px;
+    height: 120px;
+    left: -20px;
+    clip-path: polygon(0 100%, 100% 100%, 80% 40%, 65% 70%, 45% 15%, 25% 60%, 10% 20%);
+}
+
+.rock-2 {
+    width: 450px;
+    height: 100px;
+    right: -30px;
+    clip-path: polygon(0 100%, 100% 100%, 100% 20%, 85% 50%, 60% 10%, 40% 60%, 15% 30%);
+}
+
+.rock-3 {
+    width: 250px;
+    height: 80px;
+    left: 45%;
+    clip-path: polygon(0 100%, 100% 100%, 80% 30%, 50% 60%, 20% 10%);
+}
+
+/* Bubbles coming out of the dark corals */
+.coral-bubble {
+    position: absolute;
+    bottom: 10px;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    animation: coralBubbleRise infinite ease-in;
+}
+
+@keyframes coralBubbleRise {
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
 }
