@@ -122,38 +122,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Project Modal Logic
+        // Project Modal Logic
     const projectModal = document.getElementById('projectModal');
-    const modalGallery = document.getElementById('modalGallery');
     const modalTitle = document.getElementById('modalTitle');
     const closeModal = document.getElementById('closeModal');
-    const viewLinks = document.querySelectorAll('.view-link');
-
+    
     if (projectModal) {
-        viewLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+        // Event delegation for view links (since some might be generated from github)
+        document.body.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('view-link')) {
                 e.preventDefault();
+                const link = e.target;
                 const title = link.getAttribute('data-title') || 'Project Gallery';
+                const targetId = link.getAttribute('data-target');
                 const imagesStr = link.getAttribute('data-images');
-
-                modalTitle.innerText = title;
-                modalGallery.innerHTML = '';
-
-                if (imagesStr) {
+                
+                modalTitle.textContent = title;
+                
+                // Check if there is a target template
+                if (targetId) {
+                    const template = document.getElementById(targetId);
+                    if (template) {
+                        let modalBody = document.getElementById('modalBody');
+                        if (!modalBody) {
+                            modalBody = document.createElement('div');
+                            modalBody.id = 'modalBody';
+                            const modalContent = document.querySelector('.modal-content');
+                            const elementsToRemove = Array.from(modalContent.children).filter(el => 
+                                el !== closeModal && el !== modalTitle
+                            );
+                            elementsToRemove.forEach(el => el.remove());
+                            modalContent.appendChild(modalBody);
+                        }
+                        modalBody.innerHTML = template.innerHTML;
+                    }
+                } else if (imagesStr) {
+                    let modalBody = document.getElementById('modalBody');
+                    if (!modalBody) {
+                        modalBody = document.createElement('div');
+                        modalBody.id = 'modalBody';
+                        const modalContent = document.querySelector('.modal-content');
+                        const elementsToRemove = Array.from(modalContent.children).filter(el => 
+                            el !== closeModal && el !== modalTitle
+                        );
+                        elementsToRemove.forEach(el => el.remove());
+                        modalContent.appendChild(modalBody);
+                    }
+                    
+                    let fallbackHtml = '<div class="modal-gallery">';
                     const imgUrls = imagesStr.split(',');
                     imgUrls.forEach(url => {
                         if (url.trim()) {
-                            const img = document.createElement('img');
-                            img.src = url.trim();
-                            modalGallery.appendChild(img);
+                            fallbackHtml += '<div class="project-image"><img src="' + url.trim() + '"></div>';
                         }
                     });
-                } else {
-                    modalGallery.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Belum ada foto untuk proyek ini.</p>';
+                    fallbackHtml += '</div>';
+                    modalBody.innerHTML = fallbackHtml;
                 }
-
+                
                 projectModal.classList.add('active');
-            });
+            }
         });
 
         closeModal.addEventListener('click', () => {
@@ -280,3 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchGitHubProjects();
 });
+
+
+
+

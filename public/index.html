@@ -4,7 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marina Delacroix | Portfolio</title>
+    <title>Hubaib Akhtar | Software Engineer & Designer</title>
+
+    <!-- SEO & Open Graph Meta Tags -->
+    <meta name="description"
+        content="Portfolio of Hubaib Akhtar Al Fariezy. Crafting deep, deliberate, and high-performance digital experiences.">
+    <meta name="author" content="Hubaib Akhtar Al Fariezy">
+    <meta property="og:title" content="Hubaib Akhtar | Portfolio">
+    <meta property="og:description"
+        content="Software Engineer focused on mobile and web development. Exploring the depths of technology.">
+    <meta property="og:type" content="website">
+
+    <!-- Pura-pura favicon dengan emoji wave -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,6 +28,7 @@
 </head>
 
 <body>
+    </div>
     <div class="ambient-background">
         <div class="grid-lines"></div>
         <div class="ambient-dot dot-1"></div>
@@ -226,30 +241,44 @@
             <div class="project-list">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #0a1f33, #05101a);"><img
-                            src="https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg"></div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #0a1f33, #05101a);"><img src="https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg"></div>
                     <div class="project-content">
                         <div class="project-meta">2026 &middot; Mobile App</div>
-                        <h3 class="project-name"> School Project</h3>
+                        <h3 class="project-name">Any Project Mobile App</h3>
                         <p class="project-tech">Flutter & Dart</p>
-                        <a href="#" class="view-link" data-title="School Project"
-                            data-images="https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg">VIEW
-                            PROJECT &rarr;</a>
+                        <a href="#" class="view-link" data-title="Any Project Mobile App" data-target="detail-project-1">VIEW PROJECT &rarr;</a>
                     </div>
                 </div>
 
+                <!-- Template Konten Project 1 (Akan muncul di Modal) -->
+                <div id="detail-project-1" style="display: none;">
+                    <p class="modal-desc" style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">
+                        Ini adalah aplikasi mobile berbasis Flutter & Dart. Dibuat dengan fokus pada performa yang cepat dan desain antarmuka pengguna yang sangat bersih dan modern.
+                    </p>
+                    <div class="modal-gallery">
+                        <div class="project-image"><img src="https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg"></div>
+                    </div>
+                </div>
 
                 <!-- Project 2 -->
                 <div class="project-card reverse">
-                    <div class="project-image" style="background: linear-gradient(135deg, #091c2d, #040c14);"><img
-                            src="Poster.webp">
-                    </div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #091c2d, #040c14);"><img src="Poster.webp"></div>
                     <div class="project-content">
                         <div class="project-meta">2026 &middot; UI/UX</div>
-                        <h3 class="project-name">App & Web Design</h3>
+                        <h3 class="project-name">App, Web Design </h3>
+                        <h3 class="project-name">& Graphic Design</h3>
                         <p class="project-tech">Figma</p>
-                        <a href="#" class="view-link" data-title="App & Web Design" data-images="Poster.webp">VIEW
-                            PROJECT &rarr;</a>
+                        <a href="#" class="view-link" data-title="App, Web Design & Graphic Design" data-target="detail-project-2">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Template Konten Project 2 (Akan muncul di Modal) -->
+                <div id="detail-project-2" style="display: none;">
+                    <p class="modal-desc" style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">
+                        Proyek desain UI/UX komprehensif menggunakan Figma. Melibatkan riset pengguna, wireframing, pembuatan prototype interaktif, hingga desain poster promosi untuk kebutuhan marketing.
+                    </p>
+                    <div class="modal-gallery">
+                        <div class="project-image"><img src="Poster.webp"></div>
                     </div>
                 </div>
             </div>
@@ -337,6 +366,14 @@
         <div class="modal-content">
             <button class="modal-close" id="closeModal">&times;</button>
             <h3 class="modal-title" id="modalTitle">Project Gallery</h3>
+
+            <p id="modalDesc" class="modal-desc"
+                style="color: var(--text-muted); margin-bottom: 30px; line-height: 1.6;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+            </p>
+
             <div class="modal-gallery" id="modalGallery">
                 <!-- Images will be injected here via JS -->
             </div>

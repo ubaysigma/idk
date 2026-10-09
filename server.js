@@ -3,15 +3,27 @@ const cors = require('cors');
 const axios = require('axios');
 const xss = require('xss');
 const validator = require('validator');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(helmet()); // Mengamankan header HTTP aplikasi dari kerentanan umum
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10kb' })); // Membatasi ukuran body request maksimal 10kb untuk mencegah serangan DoS
 app.use(express.static('public')); // Serve the frontend from 'public' folder
+
+// Konfigurasi Rate Limiter untuk form kontak (Maksimal 3 pesan per 15 menit per IP)
+const contactLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 Menit
+    max: 3, // Limit tiap IP mengirim maksimal 3 request per windowMs
+    message: { success: false, message: 'Terlalu banyak pesan terkirim. Silakan coba lagi setelah 15 menit.' },
+    standardHeaders: true, 
+    legacyHeaders: false, 
+});
 
 // Configuration
 // You can change this to your actual GitHub username
@@ -75,7 +87,8 @@ app.get('/api/github-projects', async (req, res) => {
 });
 
 // --- 2. API: Contact Form Submission ---
-app.post('/api/contact', (req, res) => {
+// Apply contactLimiter here to prevent spam
+app.post('/api/contact', contactLimiter, (req, res) => {
     let { name, email, message } = req.body;
 
     // 1. Validasi input kosong
