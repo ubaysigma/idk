@@ -35,7 +35,7 @@ const portfolioCategories = [
         id: "category-design",
         title: "UI/UX & Graphic Design",
         description: "Kumpulan eksplorasi desain visual, wireframing, dan prototype interaktif.",
-        thumbnail: "fotoproject/Poster.webp",
+        thumbnail: "public/fotoproject/Poster.webp",
         projects: [
             {
                 title: "Typograph Design",
