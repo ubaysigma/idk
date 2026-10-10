@@ -1,20 +1,25 @@
 /* Custom Properties */
 :root {
-    --bg-layer-2: #071321; /* Slightly lighter than hero */
+    --bg-layer-1: #0a1f33;
+    --bg-layer-2: #071321;
     --bg-layer-3: #050e19;
     --bg-layer-4: #040b13;
-    --bg-layer-5: #020509; /* Deep but not absolute black */
+    --bg-layer-5: #020509;
     --bg-dark: #040a13;
     --bg-darker: #02050a;
-    --accent: #08B2C4;
-    --accent-glow: rgba(8, 178, 196, 0.3);
+    --card-bg: rgba(7, 19, 33, 0.5);
+    --text-primary: #ffffff;
     --text-main: #ffffff;
+    --text-secondary: #e2e8f0;
     --text-muted: #8E9BAE;
-    
+    --accent: #08B2C4;
+    --accent-hover: #0698a6;
+    --accent-glow: rgba(8, 178, 196, 0.15);
+    --accent-transparent: rgba(8, 178, 196, 0.1);
+    --border-color: rgba(255, 255, 255, 0.1);
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'Playfair Display', serif;
-    
-    --transition: 0.3s ease-out;
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -79,18 +84,44 @@ ul {
     height: 6px;
     background: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 15px 4px var(--accent-glow);
+
     opacity: 0.4;
 }
 
-.dot-1 { top: 20%; left: 15%; animation: float 10s ease-in-out infinite; }
-.dot-2 { top: 60%; right: 20%; animation: float 14s ease-in-out infinite reverse; }
-.dot-3 { bottom: 30%; left: 30%; animation: float 12s ease-in-out infinite; }
-.dot-4 { top: 40%; right: 40%; animation: float 18s ease-in-out infinite reverse; }
+.dot-1 {
+    top: 20%;
+    left: 15%;
+    animation: float 10s ease-in-out infinite;
+}
+
+.dot-2 {
+    top: 60%;
+    right: 20%;
+    animation: float 14s ease-in-out infinite reverse;
+}
+
+.dot-3 {
+    bottom: 30%;
+    left: 30%;
+    animation: float 12s ease-in-out infinite;
+}
+
+.dot-4 {
+    top: 40%;
+    right: 40%;
+    animation: float 18s ease-in-out infinite reverse;
+}
 
 @keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-20px) translateX(10px); }
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
 }
 
 /* Typography Classes */
@@ -138,7 +169,7 @@ ul {
 .btn-primary:hover {
     background-color: transparent;
     color: var(--accent);
-    box-shadow: 0 0 20px var(--accent-glow);
+
 }
 
 .btn-outline {
@@ -327,8 +358,15 @@ ul {
 }
 
 @keyframes scroll {
-    0% { top: 6px; opacity: 1; }
-    100% { top: 20px; opacity: 0; }
+    0% {
+        top: 6px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 20px;
+        opacity: 0;
+    }
 }
 
 /* Common Section Styles */
@@ -391,7 +429,8 @@ section:not(.hero) {
 
 .about-image-wrapper {
     position: relative;
-    width: 85%; /* Diperkecil sedikit */
+    width: 85%;
+    /* Diperkecil sedikit */
     margin: 0 auto;
     aspect-ratio: 4/5;
 }
@@ -405,7 +444,8 @@ section:not(.hero) {
     position: relative;
 }
 
-.about-image::before, .project-image::before {
+.about-image::before,
+.project-image::before {
     content: '';
     position: absolute;
     top: -10px;
@@ -419,7 +459,8 @@ section:not(.hero) {
     transition: var(--transition);
 }
 
-.about-image::after, .project-image::after {
+.about-image::after,
+.project-image::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -457,14 +498,22 @@ section:not(.hero) {
     height: 12px;
     background: #00ff88;
     border-radius: 50%;
-    box-shadow: 0 0 10px #00ff88;
+
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    0% {
+        transform: scale(0.95);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
 }
 
 .status-title {
@@ -519,7 +568,7 @@ section:not(.hero) {
     height: 8px;
     background: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent);
+
 }
 
 .badges-wrapper {
@@ -567,27 +616,34 @@ section:not(.hero) {
 
 .project-image {
     width: 100%;
-    aspect-ratio: 4/5;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
     transition: var(--transition);
     border-radius: 4px;
     position: relative;
-    /* overflow: hidden dihapus dan border full dihapus */
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px;
+    display: block;
 }
 
 .project-card:hover .project-image {
     transform: scale(1.02);
 }
+
 .project-card:hover .project-image::before {
-    top: -15px; left: -15px;
+    top: -15px;
+    left: -15px;
 }
+
 .project-card:hover .project-image::after {
-    bottom: -15px; right: -15px;
+    bottom: -15px;
+    right: -15px;
 }
 
 .project-meta {
@@ -721,26 +777,74 @@ footer {
     transform: translateY(0);
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
 
 /* Responsive */
 @media (max-width: 992px) {
-    .hero-title { font-size: 70px; }
-    .about-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
-    .project-card, .project-card.reverse { grid-template-columns: 1fr; }
-    .project-card.reverse .project-image { order: 0; }
+    .hero-title {
+        font-size: 70px;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .project-card,
+    .project-card.reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card.reverse .project-image {
+        order: 0;
+    }
 }
 
 @media (max-width: 768px) {
-    .nav-links, .nav-btn { display: none; }
-    .hamburger { display: flex; }
-    .hero-title { font-size: 50px; }
-    .section-title { font-size: 36px; }
-    .stats { flex-direction: column; gap: 20px; }
-    .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+
+    .nav-links,
+    .nav-btn {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 50px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
 }
 
 /* Wave Dividers */
@@ -751,33 +855,70 @@ footer {
     line-height: 0;
     margin-top: -1px;
 }
+
 .wave-svg {
     display: block;
     width: 100%;
     height: 100%;
 }
+
 /* Transition Hero (Layer 1) to About (Layer 2) */
-.wave-1 { background-color: var(--bg-dark); }
-.wave-1 .wave-path { fill: var(--bg-layer-2); }
+.wave-1 {
+    background-color: var(--bg-dark);
+}
+
+.wave-1 .wave-path {
+    fill: var(--bg-layer-2);
+}
 
 /* Transition About (Layer 2) to Skills (Layer 3) */
-.wave-2 { background-color: var(--bg-layer-2); }
-.wave-2 .wave-path { fill: var(--bg-layer-3); }
+.wave-2 {
+    background-color: var(--bg-layer-2);
+}
+
+.wave-2 .wave-path {
+    fill: var(--bg-layer-3);
+}
 
 /* Transition Skills (Layer 3) to Projects (Layer 4) */
-.wave-3 { background-color: var(--bg-layer-3); }
-.wave-3 .wave-path { fill: var(--bg-layer-4); }
+.wave-3 {
+    background-color: var(--bg-layer-3);
+}
+
+.wave-3 .wave-path {
+    fill: var(--bg-layer-4);
+}
 
 /* Transition Projects (Layer 4) to Contact (Layer 5) */
-.wave-4 { background-color: var(--bg-layer-4); }
-.wave-4 .wave-path { fill: var(--bg-layer-5); }
+.wave-4 {
+    background-color: var(--bg-layer-4);
+}
+
+.wave-4 .wave-path {
+    fill: var(--bg-layer-5);
+}
 
 /* Adjust Section Backgrounds */
-section:not(.hero) { padding: 80px 0 120px; border-top: none; }
-#about { background-color: var(--bg-layer-2); }
-#skills { background-color: var(--bg-layer-3); }
-#projects { background-color: var(--bg-layer-4); }
-#contact { background-color: var(--bg-layer-5); }
+section:not(.hero) {
+    padding: 80px 0 120px;
+    border-top: none;
+}
+
+#about {
+    background-color: var(--bg-layer-2);
+}
+
+#skills {
+    background-color: var(--bg-layer-3);
+}
+
+#projects {
+    background-color: var(--bg-layer-4);
+}
+
+#contact {
+    background-color: var(--bg-layer-5);
+}
 
 
 /* --- Animations for Waves and Bubbles --- */
@@ -785,22 +926,30 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
 /* Wave Animation */
 .wave-svg {
     width: calc(100% + 100px);
-    margin-left: -50px; /* Hide edges so it can move */
+    margin-left: -50px;
+    /* Hide edges so it can move */
 }
 
 .wave-path:nth-child(1) {
     animation: waveSway 12s ease-in-out infinite alternate;
 }
+
 .wave-path:nth-child(2) {
     animation: waveSway 18s ease-in-out infinite alternate-reverse;
 }
+
 .wave-path:nth-child(3) {
     animation: waveSway 24s ease-in-out infinite alternate;
 }
 
 @keyframes waveSway {
-    0% { transform: translateX(-30px); }
-    100% { transform: translateX(30px); }
+    0% {
+        transform: translateX(-30px);
+    }
+
+    100% {
+        transform: translateX(30px);
+    }
 }
 
 /* Bubbles Animation */
@@ -819,21 +968,77 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
     position: absolute;
     bottom: -50px;
     background: transparent;
-    border: 1px solid rgba(8, 178, 196, 0.4); /* Cyan bubble edge */
+    border: 1px solid rgba(8, 178, 196, 0.4);
+    /* Cyan bubble edge */
     border-radius: 50%;
-    box-shadow: inset 0 0 10px rgba(8, 178, 196, 0.2);
+
     animation: bubbleRise infinite ease-in;
 }
 
 /* Different sizes, positions, and speeds for each bubble */
-.b1 { left: 10%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 0s; }
-.b2 { left: 25%; width: 10px; height: 10px; animation-duration: 8s; animation-delay: 2s; }
-.b3 { left: 40%; width: 30px; height: 30px; animation-duration: 15s; animation-delay: 4s; }
-.b4 { left: 55%; width: 15px; height: 15px; animation-duration: 10s; animation-delay: 1s; }
-.b5 { left: 70%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 5s; }
-.b6 { left: 85%; width: 12px; height: 12px; animation-duration: 9s; animation-delay: 3s; }
-.b7 { left: 15%; width: 22px; height: 22px; animation-duration: 16s; animation-delay: 6s; }
-.b8 { left: 75%; width: 18px; height: 18px; animation-duration: 11s; animation-delay: 2.5s; }
+.b1 {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+.b2 {
+    left: 25%;
+    width: 10px;
+    height: 10px;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+.b3 {
+    left: 40%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 15s;
+    animation-delay: 4s;
+}
+
+.b4 {
+    left: 55%;
+    width: 15px;
+    height: 15px;
+    animation-duration: 10s;
+    animation-delay: 1s;
+}
+
+.b5 {
+    left: 70%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 14s;
+    animation-delay: 5s;
+}
+
+.b6 {
+    left: 85%;
+    width: 12px;
+    height: 12px;
+    animation-duration: 9s;
+    animation-delay: 3s;
+}
+
+.b7 {
+    left: 15%;
+    width: 22px;
+    height: 22px;
+    animation-duration: 16s;
+    animation-delay: 6s;
+}
+
+.b8 {
+    left: 75%;
+    width: 18px;
+    height: 18px;
+    animation-duration: 11s;
+    animation-delay: 2.5s;
+}
 
 @keyframes bubbleRise {
     0% {
@@ -841,15 +1046,20 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
         transform: translateX(0) scale(1);
         opacity: 0;
     }
+
     20% {
         opacity: 1;
     }
+
     80% {
         opacity: 1;
     }
+
     100% {
-        bottom: 110vh; /* Moves above the screen */
-        transform: translateX(50px) scale(1.5); /* Sways slightly right and grows */
+        bottom: 110vh;
+        /* Moves above the screen */
+        transform: translateX(50px) scale(1.5);
+        /* Sways slightly right and grows */
         opacity: 0;
     }
 }
@@ -878,8 +1088,10 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
 }
 
 .modal-content {
-    background: var(--bg-darker);
-    border: 1px solid rgba(8, 178, 196, 0.3);
+    background: rgba(2, 5, 9, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 40px;
     width: 90%;
@@ -926,35 +1138,33 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
     gap: 20px;
     padding-bottom: 20px;
 }
+
 .modal-gallery::-webkit-scrollbar {
     height: 8px;
 }
+
 .modal-gallery::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
 }
+
 .modal-gallery::-webkit-scrollbar-thumb {
     background: var(--accent);
     border-radius: 4px;
 }
 
 .modal-gallery img {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 65vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
 }
 
 
-/* Ensure images inside .about-image and .project-image fit perfectly */
-.about-image img, .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: inherit;
-}
+
 
 
 
@@ -976,20 +1186,46 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
     height: 12px;
     background: #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5), 0 0 30px rgba(8, 178, 196, 0.3);
+
     animation: creatureBlink 7s infinite;
 }
 
 @keyframes creatureStare {
-    0%, 20% { opacity: 0; transform: translateX(0) translateY(10px); }
-    30%, 70% { opacity: 0.9; transform: translateX(20px) translateY(0); }
-    80%, 100% { opacity: 0; transform: translateX(0) translateY(10px); }
+
+    0%,
+    20% {
+        opacity: 0;
+        transform: translateX(0) translateY(10px);
+    }
+
+    30%,
+    70% {
+        opacity: 0.9;
+        transform: translateX(20px) translateY(0);
+    }
+
+    80%,
+    100% {
+        opacity: 0;
+        transform: translateX(0) translateY(10px);
+    }
 }
 
 @keyframes creatureBlink {
-    0%, 94%, 98% { transform: scaleY(1); }
-    96% { transform: scaleY(0.1); }
-    100% { transform: scaleY(1); }
+
+    0%,
+    94%,
+    98% {
+        transform: scaleY(1);
+    }
+
+    96% {
+        transform: scaleY(0.1);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
 }
 
 
@@ -1008,7 +1244,8 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
 .coral-rock {
     position: absolute;
     bottom: 0;
-    background: #010204; /* Very dark coral silhouette */
+    background: #010204;
+    /* Very dark coral silhouette */
 }
 
 /* Creating jagged abstract coral shapes using clip-path */
@@ -1041,26 +1278,25 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
     height: 5px;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+
     animation: coralBubbleRise infinite ease-in;
 }
 
 @keyframes coralBubbleRise {
-    0% { transform: translateY(0) scale(0.8); opacity: 0; }
-    20% { opacity: 1; }
-    100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-150px) scale(1.5);
+        opacity: 0;
+    }
 }
-
-
-
-    50% { transform: translateY(-60vh) scale(1.1) translateX(20px); opacity: 1; }
-    100% { transform: translateY(-130vh) scale(1.5) translateX(-20px); opacity: 0; }
-}
-
-
-
-
-
 
 
 
@@ -1075,25 +1311,142 @@ section:not(.hero) { padding: 80px 0 120px; border-top: none; }
     padding-bottom: 20px;
     align-items: center;
 }
-.modal-gallery::before, .modal-gallery::after {
+
+.modal-gallery::before,
+.modal-gallery::after {
     content: '';
     flex: 0 0 auto;
-    width: 10%; /* Pad the ends so images can snap to center */
+    width: 10%;
+    /* Pad the ends so images can snap to center */
 }
+
 .modal-gallery::-webkit-scrollbar {
     height: 8px;
 }
+
 .modal-gallery::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
 }
+
 .modal-gallery::-webkit-scrollbar-thumb {
     background: var(--accent);
     border-radius: 4px;
 }
+
 .modal-gallery .project-image {
-    flex: 0 0 60%; /* Dikecilkan ukurannya (dari 85%) */
+    flex: 0 0 60%;
+    /* Dikecilkan ukurannya (dari 85%) */
     max-width: 450px;
     scroll-snap-align: center;
     margin: 0 auto;
+}
+
+
+/* Global Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-layer-2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(8, 178, 196, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Specific styling for modal content scrollbar to blend in perfectly */
+.modal-content::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 0 15px 15px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bubbles,
+.glow-overlay {
+    opacity: 0.1 !important;
+    pointer-events: none;
+}
+
+
+/* --- Animated Waves --- */
+.waves-container {
+    position: absolute;
+    bottom: -1px;
+    /* To prevent 1px gap */
+    left: 0;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 10;
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    max-height: 150px;
+}
+
+.parallax>use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.parallax>use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax>use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax>use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax>use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .waves-container {
+        height: 60px;
+        min-height: 60px;
+    }
 }

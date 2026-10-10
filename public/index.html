@@ -104,6 +104,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Animated Waves Divider -->
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(7, 19, 33, 0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(7, 19, 33, 0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(7, 19, 33, 0.7)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="var(--bg-layer-2)" />
+                </g>
+            </svg>
+        </div>
     </section>
 
 
@@ -139,7 +156,7 @@
 
                 <div class="about-image-wrapper">
 
-                    <div class="about-image"><img src="Ubay.jpeg"></div>
+                    <div class="about-image"><img src="fotoproject/Ubay.jpeg"></div>
                     <div class="status-box">
                         <div class="status-dot"></div>
                         <div>
@@ -238,49 +255,8 @@
             <h2 class="section-title"><span class="title-serif">Recent</span> <span
                     class="title-serif-italic">expeditions.</span></h2>
 
-            <div class="project-list">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #0a1f33, #05101a);"><img src="https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg"></div>
-                    <div class="project-content">
-                        <div class="project-meta">2026 &middot; Mobile App</div>
-                        <h3 class="project-name">Any Project Mobile App</h3>
-                        <p class="project-tech">Flutter & Dart</p>
-                        <a href="#" class="view-link" data-title="Any Project Mobile App" data-target="detail-project-1">VIEW PROJECT &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Template Konten Project 1 (Akan muncul di Modal) -->
-                <div id="detail-project-1" style="display: none;">
-                    <p class="modal-desc" style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">
-                        Ini adalah aplikasi mobile berbasis Flutter & Dart. Dibuat dengan fokus pada performa yang cepat dan desain antarmuka pengguna yang sangat bersih dan modern.
-                    </p>
-                    <div class="modal-gallery">
-                        <div class="project-image"><img src="https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg"></div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card reverse">
-                    <div class="project-image" style="background: linear-gradient(135deg, #091c2d, #040c14);"><img src="Poster.webp"></div>
-                    <div class="project-content">
-                        <div class="project-meta">2026 &middot; UI/UX</div>
-                        <h3 class="project-name">App, Web Design </h3>
-                        <h3 class="project-name">& Graphic Design</h3>
-                        <p class="project-tech">Figma</p>
-                        <a href="#" class="view-link" data-title="App, Web Design & Graphic Design" data-target="detail-project-2">VIEW PROJECT &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Template Konten Project 2 (Akan muncul di Modal) -->
-                <div id="detail-project-2" style="display: none;">
-                    <p class="modal-desc" style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">
-                        Proyek desain UI/UX komprehensif menggunakan Figma. Melibatkan riset pengguna, wireframing, pembuatan prototype interaktif, hingga desain poster promosi untuk kebutuhan marketing.
-                    </p>
-                    <div class="modal-gallery">
-                        <div class="project-image"><img src="Poster.webp"></div>
-                    </div>
-                </div>
+            <div class="project-list" id="projectList">
+                <!-- Proyek akan di-generate otomatis oleh JavaScript dari file projects.js -->
             </div>
         </div>
     </section>
@@ -380,6 +356,7 @@
         </div>
     </div>
 
+    <script src="projects.js"></script>
     <script src="script.js"></script>
 </body>
 
