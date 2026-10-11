@@ -22,9 +22,9 @@ const portfolioCategories = [
                 title:"School Practice: Flutter Auth & Calculator App",
                 year: "2026",
                 tech: "Flutter & Dart",
-                description: "A vocational school project built with Flutter & Dart, implementing modular reusable components, complete user registration-login flow, and a functional calculator utility.":,
-                images: []
-            }
+                description: "A vocational school project built with Flutter & Dart, implementing modular reusable components, complete user registration-login flow, and a functional calculator utility.",
+  
+            },
             // KEDEPANNYA: Anda bisa menambahkan proyek mobile ke-2, ke-3 dst di sini!
             /*
             ,
