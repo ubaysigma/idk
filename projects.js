@@ -17,6 +17,13 @@ const portfolioCategories = [
                 images: [
                     "https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg"
                 ]
+            },
+            {
+                title:"School Practice: Flutter Auth & Calculator App",
+                year: "2026",
+                tech: "Flutter & Dart",
+                description: "A vocational school project built with Flutter & Dart, implementing modular reusable components, complete user registration-login flow, and a functional calculator utility.":,
+                images: []
             }
             // KEDEPANNYA: Anda bisa menambahkan proyek mobile ke-2, ke-3 dst di sini!
             /*
@@ -47,14 +54,15 @@ const portfolioCategories = [
                 ]
             },
             {
-                title: "Design Aplikasi Absen Kelas",
+                title: "Student Attendance App UI/UX Design",
                 year: "2026",
                 tech: "Figma",
-                description: "Ini adalah project design aplikasi absen kelas yang saya buat dengan menggunakan Figma",
+                description: "A clean and intuitive mobile app interface designed in Figma to streamline student attendance tracking and classroom management.",
                 images: [
                     "fotoproject/disenappabsen.png"
                 ]
             }
         ]
     }
+
 ];
