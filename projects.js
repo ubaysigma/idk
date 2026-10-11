@@ -6,7 +6,7 @@ const portfolioCategories = [
     {
         id: "category-mobile",
         title: "Mobile App Development",
-        description: "Kumpulan proyek pengembangan aplikasi mobile yang berfokus pada performa tinggi dan antarmuka modern.",
+        description: "A curated collection of mobile app development projects focused on high performance and modern interfaces.",
         thumbnail: "https://i.pinimg.com/736x/f7/ee/b9/f7eeb98c91da110c4700f59b993eccbd.jpg", // Gambar cover kategori di halaman utama
         projects: [
             {
@@ -41,10 +41,10 @@ const portfolioCategories = [
     {
         id: "category-design",
         title: "UI/UX & Graphic Design",
-        description: "Kumpulan eksplorasi desain visual, wireframing, dan prototype interaktif.",
+        description: "A collection of visual design explorations, wireframes, and interactive prototypes.",
         thumbnail: "public/fotoproject/Poster.webp",
         projects: [
-            {
+            {   
                 title: "Typograph Design",
                 year: "2026",
                 tech: "Figma",
