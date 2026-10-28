@@ -46,9 +46,9 @@ const portfolioCategories = [
         projects: [
             {   
                 title: "Typograph Design",
-                year: "2026",
-                tech: "Figma",
-                description: "A comprehensive UI/UX design project crafted in Figma. This includes extensive user research, low-fidelity wireframing, interactive prototyping, and promotional poster designs for marketing needs.",
+                year: "2025",
+                tech: "Alight Motion",
+                description: "A Typhograph Design with Roblox theme, i make to fill the free time",
                 images: [
                     "fotoproject/Poster.webp"
                 ]
